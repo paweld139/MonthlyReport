@@ -14,7 +14,8 @@ namespace MonthlyReport.BLL.Services
             await using var browser = await Puppeteer.LaunchAsync(new LaunchOptions
             {
                 Headless = true,
-                ExecutablePath = PuppeteerExtensions.ExecutablePath
+                ExecutablePath = PuppeteerExtensions.ExecutablePath,
+                Args = ["--no-sandbox"]
             });
 
             await using var page = await browser.NewPageAsync();
