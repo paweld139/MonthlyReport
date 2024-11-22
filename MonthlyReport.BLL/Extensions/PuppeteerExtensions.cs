@@ -9,7 +9,7 @@ namespace MonthlyReport.BLL.Extensions
 
         public static async Task PreparePuppeteerAsync(this IHostEnvironment hostingEnvironment)
         {
-            var downloadPath = Path.Join(hostingEnvironment.ContentRootPath, @"\puppeteer");
+            var downloadPath = Path.Join(hostingEnvironment.ContentRootPath, "puppeteer");
 
             var browserOptions = new BrowserFetcherOptions
             {
