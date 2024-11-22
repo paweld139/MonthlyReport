@@ -92,7 +92,12 @@ namespace MonthlyReport.BLL.Services
 
             var xmlDocument = exportModel.Data.ToXmlDocument();
 
-            using (var writer = XmlWriter.Create(stream))
+            var xmlWriterSettings = new XmlWriterSettings
+            {
+                Async = true
+            };
+
+            using (var writer = XmlWriter.Create(stream, xmlWriterSettings))
             {
                 await xmlDocument.WriteToAsync(writer, CancellationToken.None);
             }
