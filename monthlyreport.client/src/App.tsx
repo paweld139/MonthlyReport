@@ -49,6 +49,10 @@ import {
     faTrash
 } from '@fortawesome/free-solid-svg-icons';
 
+import {
+    IconProp
+} from '@fortawesome/fontawesome-svg-core';
+
 import ExportModal from './components/modals/ExportModal';
 
 import ConfirmationModal from './components/modals/ConfirmationModal';
@@ -176,7 +180,7 @@ function App() {
 
     const actions = useMemo<TableAction<Entry>[]>(() => [
         {
-            icon: () => faTrash,
+            icon: () => faTrash as IconProp,
             title: () => 'Delete',
             onClick: row => {
                 setConfirmationModalSettings({

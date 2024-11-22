@@ -30,6 +30,10 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 
 import {
+    IconProp
+} from '@fortawesome/fontawesome-svg-core';
+
+import {
     getErrors
 } from "../utils";
 
@@ -62,7 +66,7 @@ const AppTable = <T,>({
 
     const defaultActions = useMemo<TableAction<T>[] | undefined>(() => editable && [
         {
-            icon: row => editable(row, editedRow) ? faCancel : faPencil,
+            icon: row => editable(row, editedRow) ? faCancel as IconProp : faPencil as IconProp,
             title: row => editable(row, editedRow) ? 'Cancel' : 'Edit',
             onClick: row => {
                 if (editable(row, editedRow)) {
@@ -77,7 +81,7 @@ const AppTable = <T,>({
             color: row => editable(row, editedRow) ? 'danger' : 'primary'
         },
         {
-            icon: () => faCheck,
+            icon: () => faCheck as IconProp,
             title: () => 'Save',
             onClick: async () => {
                 if (editedRow) {
@@ -120,7 +124,7 @@ const AppTable = <T,>({
                             {column.label}
                             {" "}
                             {canSort(column) && sort!.property === column.property && sort!.direction &&
-                                <FontAwesomeIcon icon={sort!.direction == 'asc' ? faChevronUp : faChevronDown} />}
+                                <FontAwesomeIcon icon={sort!.direction == 'asc' ? faChevronUp as IconProp : faChevronDown as IconProp} />}
                         </th>
                     )}
                     {actions && actions.length &&

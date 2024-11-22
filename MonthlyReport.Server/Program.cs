@@ -55,7 +55,7 @@ namespace MonthlyReport.Server
         {
             var connectionString = configuration.GetConnectionString("DefaultConnection");
 
-            services.AddSqlServer<MonthlyReportContext>(connectionString);
+            services.AddNpgsql<MonthlyReportContext>(connectionString);
         }
 
         private static void AddIdentity(IServiceCollection services)
