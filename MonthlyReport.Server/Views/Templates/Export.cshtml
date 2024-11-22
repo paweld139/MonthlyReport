@@ -1,0 +1,39 @@
+@using MonthlyReport.BLL.Extensions
+@using MonthlyReport.BLL.Models
+@using System.Text.Json.Nodes
+@using System.Globalization
+@using System.Text.Json
+
+@model ExportModel
+
+<table>
+    <thead>
+        <tr>
+            @foreach (var column in Model.Columns)
+            {
+                <th>@column.Name</th>
+            }
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var row in Model.Data)
+        {
+            if (row == null)
+            {
+                continue;
+            }
+
+            <tr>
+                @foreach (var column in Model.Columns)
+                {
+                    var cell = row.AsObject().AsEnumerable().Single(p => p.Key == column.Property);
+
+                    <td>
+                        @cell.GetStringValue()
+                    </td>
+                }
+            </tr>
+        }
+    </tbody>
+</table>
